@@ -1,7 +1,7 @@
 # exegesis-plugin-swagger-ui-express
 
-[![Run Status](https://api.shippable.com/projects/5c3011d2302eb707003b9ffe/badge?branch=master)]()
-[![Coverage Badge](https://api.shippable.com/projects/5c3011d2302eb707003b9ffe/coverageBadge?branch=master)]()
+[![Run Status](https://api.shippable.com/projects/5c32b19e302eb707003c01b6/badge?branch=master)]()
+[![Coverage Badge](https://api.shippable.com/projects/5c32b19e302eb707003c01b6/coverageBadge?branch=master)]()
 ![](https://img.shields.io/github/issues/phil-mitchell/exegesis-plugin-google-oauth2.svg)
 ![](https://img.shields.io/github/license/phil-mitchell/exegesis-plugin-google-oauth2.svg)
 ![](https://img.shields.io/node/v/exegesis-plugin-google-oauth2.svg)
