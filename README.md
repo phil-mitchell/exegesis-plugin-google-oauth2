@@ -28,8 +28,43 @@ options = {
     plugins: [
         exegesisGoogleOAuth2Plugin({
             // URL path to expose authentication endpoints (default /auth/google)
-            path: '/auth/google'
+            path: '/auth/google',
+
+            // Client ID and secret for Google API
+            clientId: 'myGoogleClient',
+            clientSecret: 'MyClientSecret',
+
+            // Authorization parameters to be passed to Google API (defaults shown)
+            authorization: {
+                access_type: 'online',
+                prompt: 'consent',
+                scope: [ 'email' ]
+            },
+
+            // (optional) callback function to handle successful authentication
+            // parameters:
+            // - context: exegesis context object
+            // - tokens: tokens received from Google
+            // - me: Google Plus user profile
+            callback: async function( context, tokens, me ) {
+                return{
+                    id: me.id
+                }
+            }
         })
     ]
 };
+```
+
+The environment variables `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` may also be used to provide the clientId and clientSecret.
+
+If no callback function is provided, the response to successful authentication will be a JSON object:
+
+```
+{
+    id: me.id,
+    name: me.displayName,
+    emails: me.emails,
+    image: me.image
+}
 ```
