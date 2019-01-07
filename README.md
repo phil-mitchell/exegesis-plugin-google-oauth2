@@ -1,4 +1,4 @@
-# exegesis-plugin-swagger-ui-express
+# exegesis-plugin-google-oauth2
 
 [![Run Status](https://api.shippable.com/projects/5c32b19e302eb707003c01b6/badge?branch=master)]()
 [![Coverage Badge](https://api.shippable.com/projects/5c32b19e302eb707003c01b6/coverageBadge?branch=master)]()
