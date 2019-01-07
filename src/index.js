@@ -65,6 +65,7 @@ class GoogleOAuth2Plugin {
 
     preCompile({ options }) {
         var authOptions = this._options;
+
         options.controllers[controllerName] = options.controllers[controllerName] || {};
         options.controllers[controllerName]['authenticate ' + authOptions.path ] = async function( context ) {
             var parsedUrl = url.parse( context.req.url );
