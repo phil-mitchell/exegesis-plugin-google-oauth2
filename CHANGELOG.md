@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.2...v1.0.3) (2019-02-02)
+
+
+### Bug Fixes
+
+* **api:** Provide necessary parameters to the profile API ([8afa5b3](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/commit/8afa5b3))
+
 ## [1.0.2](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.1...v1.0.2) (2019-02-02)
 
 
