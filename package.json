@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/phil-mitchell/exegesis-plugin-google-oauth2#readme",
   "dependencies": {
-    "googleapis": "^36.0.0",
+    "googleapis": "^37.1.0",
     "semver": "^5.6.0"
   },
   "devDependencies": {

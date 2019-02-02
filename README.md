@@ -45,7 +45,7 @@ options = {
             // parameters:
             // - context: exegesis context object
             // - tokens: tokens received from Google
-            // - me: Google Plus user profile
+            // - me: Google People user profile
             callback: async function( context, tokens, me ) {
                 return{
                     id: me.id

@@ -20,7 +20,7 @@ google.auth.OAuth2 = class MockOAuth2 extends GoogleOAuth2 {
             return{
                 tokens: {
                     access_token: code,
-                    scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me',
+                    scope: 'https://www.googleapis.com/auth/userinfo.email',
                     token_type: 'Bearer',
                     id_token: 'idToken1',
                     expiry_date: new Date().getTime() + 50

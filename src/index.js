@@ -85,8 +85,8 @@ class GoogleOAuth2Plugin {
                     let data = await auth.getToken( query.code );
                     tokens = data.tokens;
                     auth.setCredentials( tokens );
-                    let plus = google.plus({ version: 'v1', auth });
-                    me = await plus.people.get({ userId: 'me' });
+                    let people = google.people({ version: 'v1', auth });
+                    me = await people.people.get({ resourceName: 'me' });
                     if( me.status !== 200 || !me.data ) {
                         throw new Error( 'Failed to get user information from Google' );
                     }
