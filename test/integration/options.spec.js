@@ -94,3 +94,33 @@ describe( 'Custom path and callback', function() {
         });
     });
 });
+
+describe( 'Skip people API', function() {
+    it( 'handles the code from google', function( done ) {
+        superagent
+        .get( 'http://localhost:3000/skippeople' )
+        .query({ code: 'authcode1' })
+        .ok( res => res.status === 200 )
+        .end( function( e, res ) {
+            expect( e ).to.be.null;
+            expect( res.body.access_token ).to.eql( 'authcode1' );
+            done();
+        });
+    });
+});
+
+describe( 'Override personFields', function() {
+    it( 'handles the code from google', function( done ) {
+        superagent
+        .get( 'http://localhost:3000/personfields' )
+        .query({ code: 'authcode1' })
+        .ok( res => res.status === 200 )
+        .end( function( e, res ) {
+            expect( e ).to.be.null;
+            expect( res.body.id ).to.equal( 'testid1' );
+            expect( res.body.emails ).to.not.exist;
+            expect( res.body.image ).to.not.exist;
+            done();
+        });
+    });
+});

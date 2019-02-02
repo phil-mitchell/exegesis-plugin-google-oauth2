@@ -38,10 +38,17 @@ options = {
             authorization: {
                 access_type: 'online',
                 prompt: 'consent',
-                scope: [ 'email' ]
+                scope: [ 'email', 'profile' ]
             },
 
-            // (optional) callback function to handle successful authentication
+            // Options to pass to people.get (see https://developers.google.com/people/api/rest/v1/people/get)
+            people: {
+                skip: false, // don't call the people API
+                resourceName: 'people/me',
+                personFields: 'names,nicknames,coverPhotos,emailAddresses'
+            },
+
+            // Callback function to handle successful authentication
             // parameters:
             // - context: exegesis context object
             // - tokens: tokens received from Google

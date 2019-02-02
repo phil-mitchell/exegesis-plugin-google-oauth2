@@ -30,7 +30,7 @@ class GoogleOAuth2Plugin {
         options.authorization = Object.assign({
             access_type: 'online',
             prompt: 'consent',
-            scope: [ 'email' ]
+            scope: [ 'email', 'profile' ]
         }, options.authorization );
         options.path = options.path || '/auth/google';
 
@@ -84,13 +84,18 @@ class GoogleOAuth2Plugin {
                 try {
                     let data = await auth.getToken( query.code );
                     tokens = data.tokens;
-                    auth.setCredentials( tokens );
-                    let people = google.people({ version: 'v1', auth });
-                    me = await people.people.get({ resourceName: 'me' });
-                    if( me.status !== 200 || !me.data ) {
-                        throw new Error( 'Failed to get user information from Google' );
+                    if( !authOptions.people || !authOptions.people.skip ) {
+                        auth.setCredentials( tokens );
+                        let people = google.people({ version: 'v1', auth });
+                        me = await people.people.get( Object.assign({
+                            resourceName: 'people/me',
+                            personFields: 'names,nicknames,coverPhotos,emailAddresses'
+                        }, authOptions.people || {}) );
+                        if( me.status !== 200 || !me.data ) {
+                            throw new Error( 'Failed to get user information from Google' );
+                        }
+                        me = me.data;
                     }
-                    me = me.data;
                 } catch( e ) {
                     return context.res.setStatus( 500 ).json({
                         message: e.message
@@ -99,12 +104,15 @@ class GoogleOAuth2Plugin {
                 if( typeof( authOptions.callback ) === 'function' ) {
                     return authOptions.callback( context, tokens, me );
                 }
-                return context.res.json({
-                    id: me.id,
-                    name: me.displayName,
-                    emails: me.emails,
-                    image: me.image
-                });
+                if( me ) {
+                    return context.res.json({
+                        id: me.id,
+                        name: me.displayName,
+                        emails: me.emails,
+                        image: me.image
+                    });
+                }
+                return context.res.json( tokens );
             }
         };
     }

@@ -30,18 +30,23 @@ google.auth.OAuth2 = class MockOAuth2 extends GoogleOAuth2 {
         this.setCredentials = function( tokens ) {
             this.tokens = tokens;
         };
-        this.requestAsync = async function() {
+        this.requestAsync = async function( options ) {
             if( this.tokens.access_token === 'BadToken' ) {
                 throw new Error( 'Bad token' );
             }
+            var data = {
+                id: 'testid1',
+                name: 'Test User',
+                emails: [ 'test@google.com' ],
+                image: 'http://localhost/image.png'
+            };
+            if( options.params.personFields === 'names' ) {
+                delete data.emails;
+                delete data.image;
+            }
             return{
                 status: this.tokens.access_token === 'FailedRequest' ? 400 : 200,
-                data: {
-                    id: 'testid1',
-                    name: 'Test User',
-                    emails: [ 'test@google.com' ],
-                    image: 'http://localhost/image.png'
-                }
+                data: data
             };
         };
     }
@@ -73,6 +78,18 @@ async function createServer() {
                 clientSecret: 'fdsa',
                 path: '/myauthtest',
                 callback: authCallback1
+            }),
+            require_helper( 'index.js' )({
+                clientId: 'asdf',
+                clientSecret: 'fdsa',
+                path: '/skippeople',
+                people: { skip: true }
+            }),
+            require_helper( 'index.js' )({
+                clientId: 'asdf',
+                clientSecret: 'fdsa',
+                path: '/personfields',
+                people: { personFields: 'names' }
             })
         ]
     };
