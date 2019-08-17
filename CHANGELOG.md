@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.3...v1.0.4) (2019-08-17)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([593af2d](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/commit/593af2d))
+
 ## [1.0.3](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.2...v1.0.3) (2019-02-02)
 
 
