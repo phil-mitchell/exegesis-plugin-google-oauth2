@@ -89,7 +89,7 @@ class GoogleOAuth2Plugin {
                         let people = google.people({ version: 'v1', auth });
                         me = await people.people.get( Object.assign({
                             resourceName: 'people/me',
-                            personFields: 'names,nicknames,coverPhotos,emailAddresses'
+                            personFields: 'names,nicknames,photos,coverPhotos,emailAddresses'
                         }, authOptions.people || {}) );
                         if( me.status !== 200 || !me.data ) {
                             throw new Error( 'Failed to get user information from Google' );
