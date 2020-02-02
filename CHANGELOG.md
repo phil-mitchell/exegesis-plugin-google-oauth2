@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.5...v1.0.6) (2020-02-02)
+
+
+### Bug Fixes
+
+* **me:** Fetch the photos field ([#8](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/issues/8)) ([c1527cc](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/commit/c1527cc8df1ee044fc3f16c442ee765dd183b774))
+
 ## [1.0.5](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.4...v1.0.5) (2020-02-01)
 
 
