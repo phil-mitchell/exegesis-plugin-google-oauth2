@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.7...v1.0.8) (2021-01-20)
+
+
+### Bug Fixes
+
+* **redirect:** parse the Forwarded header to determine the redirect url ([#16](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/issues/16)) ([ee3affc](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/commit/ee3affcc8b468cdbf9d9e61714fe8e2e5b7367cc))
+
 ## [1.0.7](https://github.com/phil-mitchell/exegesis-plugin-google-oauth2/compare/v1.0.6...v1.0.7) (2020-12-21)
 
 

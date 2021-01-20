@@ -1,6 +1,6 @@
 {
   "name": "exegesis-plugin-google-oauth2",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Exegesis middleware to handle Google OAuth2 authentication",
   "main": "src/index.js",
   "engines": {
