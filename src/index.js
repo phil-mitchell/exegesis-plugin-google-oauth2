@@ -69,10 +69,23 @@ class GoogleOAuth2Plugin {
         options.controllers[controllerName] = options.controllers[controllerName] || {};
         options.controllers[controllerName]['authenticate ' + authOptions.path ] = async function( context ) {
             var parsedUrl = url.parse( context.req.url );
+            var protocol = context.req.protocol;
+            var host = context.req.get( 'host' );
+            var forwarded = context.req.get( 'forwarded' );
+            if( forwarded ) {
+                for( let field of forwarded.split( ';' ) ) {
+                    let parts = field.split( '=' );
+                    if( parts[0] === 'proto' ) {
+                        protocol = parts.slice( 1 ).join( '=' );
+                    } else if( parts[0] === 'host' ) {
+                        host = parts.slice( 1 ).join( '=' );
+                    }
+                }
+            }
             var auth = new google.auth.OAuth2(
                 authOptions.clientId,
                 authOptions.clientSecret,
-                context.req.protocol + '://' + context.req.get( 'host' ) + parsedUrl.pathname
+                protocol + '://' + host + parsedUrl.pathname
             );
 
             var query = context.params.query;
